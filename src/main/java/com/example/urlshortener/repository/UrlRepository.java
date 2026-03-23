@@ -1,6 +1,6 @@
-package repository;
+package com.example.urlshortener.repository;
 
-import dto.Url;
+import com.example.urlshortener.dto.Url;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UrlRepository extends CrudRepository<Url, String> {}

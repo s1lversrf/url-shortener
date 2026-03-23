@@ -1,9 +1,29 @@
 services:
-  postgres:
-    image: 'postgres:latest'
+  app:
+    build: .
+    container_name: url-shortener
+    env_file:
+      - .env
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      BASE_URL: ${BASE_URL}
+    depends_on:
+      database:
+        condition: service_started
     ports:
-      - '5432'
+      - "8080:8080"
+  database:
+    image: postgres:latest
+    container_name: postgres
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
