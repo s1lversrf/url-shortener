@@ -18,7 +18,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 @RequestMapping("/url-shortener")
 public class UrlController {
-    @Value("${application.base.url}")
+    @Value("${application.base-url}")
     String applicationBaseUrl;
 
     private final UrlService urlService;

@@ -7,7 +7,7 @@ import java.security.SecureRandom;
 
 @Service
 public class RandomStringGenerationService {
-    @Value("${short.url.length}")
+    @Value("${short-url-length}")
     private int shortUrlLength;
 
     public String generateRandomBase62String(){
