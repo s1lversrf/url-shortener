@@ -13,7 +13,6 @@ COPY src ./src
 RUN chmod +x gradlew
 
 RUN SPRING_PROFILES_ACTIVE=build ./gradlew clean build -x test --no-daemon
-#RUN ./gradlew clean build -x test --no-daemon
 
 FROM eclipse-temurin:21-jdk-jammy
 
